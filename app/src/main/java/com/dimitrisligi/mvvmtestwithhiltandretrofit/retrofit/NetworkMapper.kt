@@ -10,24 +10,49 @@ class NetworkMapper : MapperInterface<
         NetWorkModel, DomainModel,
         NetworkSupport, DomainSupport> {
 
-    override fun fromNetworkDataToDomainData(networkData: NetworkData): DomainData {
+    override fun fromEntityToDomainData(entityData: NetworkData): DomainData {
         return DomainData(
-            id = networkData.id,
-            avatar = networkData.avatar,
-            email = networkData.email,
-            firstname = networkData.firstName,
-            lastname = networkData.lastName
+            id = entityData.id,
+            avatar = entityData.avatar,
+            email = entityData.email,
+            firstname = entityData.firstname,
+            lastname = entityData.lastname
         )
     }
 
-    override fun fromNetworkModelToDomainModel(networkModel: NetWorkModel): DomainModel {
+    override fun fromDomainDataToEntityData(domainData: DomainData): NetworkData {
+        return NetworkData(
+            id = domainData.id,
+            avatar = domainData.avatar,
+            email = domainData.email,
+            firstname = domainData.firstname,
+            lastname = domainData.lastname
+        )
+    }
+
+    override fun fromEntityModelToDomainModel(entityModel: NetWorkModel): DomainModel {
         return DomainModel(
-            fromNetworkDataToDomainData(networkModel.networkData),
-            fromNetworkSupportToDomainSupport(networkModel.networkSupport)
+            fromEntityToDomainData(entityData = entityModel.networkData),
+            fromEntitySupportToDomainSupport(entitySupport = entityModel.networkSupport)
         )
     }
 
-    override fun fromNetworkSupportToDomainSupport(networkSupport: NetworkSupport): DomainSupport {
-        return DomainSupport(test = networkSupport.text, url = networkSupport.url)
+    override fun fromDomainModelToEntityModel(domainModel: DomainModel): NetWorkModel {
+        return NetWorkModel(
+            fromDomainDataToEntityData(domainData = domainModel.domainData),
+            fromDomainSupportToEntitySupport(domainSupport = domainModel.domainSupport)
+        )
+    }
+
+    override fun fromEntitySupportToDomainSupport(entitySupport: NetworkSupport): DomainSupport {
+        return DomainSupport(text = entitySupport.text, url = entitySupport.url)
+    }
+
+    override fun fromDomainSupportToEntitySupport(domainSupport: DomainSupport): NetworkSupport {
+        return NetworkSupport(text = domainSupport.text, url = domainSupport.url)
+    }
+
+    fun mapTheEntityList(entities: List<NetWorkModel>): List<DomainModel> {
+        return entities.map { fromEntityModelToDomainModel(it) }
     }
 }

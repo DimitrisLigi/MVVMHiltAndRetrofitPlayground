@@ -1,6 +1,6 @@
 package com.dimitrisligi.mvvmtestwithhiltandretrofit.domainmodel
 
 data class DomainSupport(
-    val test: String,
+    val text: String,
     val url: String
 )

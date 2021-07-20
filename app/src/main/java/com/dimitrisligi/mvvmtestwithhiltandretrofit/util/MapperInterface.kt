@@ -1,13 +1,24 @@
 package com.dimitrisligi.mvvmtestwithhiltandretrofit.util
 
+
 interface MapperInterface<
-        NetworkData, DomainData,
-        NetworkModel, DomainModel,
-        NetworkSupport, DomainSupport> {
+        EntityData, DomainData,
+        EntityModel, DomainModel,
+        EntitySupport, DomainSupport> {
 
-    fun fromNetworkDataToDomainData(networkData: NetworkData): DomainData
+    //DATA
+    fun fromEntityToDomainData(entityData: EntityData): DomainData
 
-    fun fromNetworkModelToDomainModel(networkModel: NetworkModel): DomainModel
+    fun fromDomainDataToEntityData(domainData: DomainData): EntityData
 
-    fun fromNetworkSupportToDomainSupport(networkSupport: NetworkSupport): DomainSupport
+    //MODEL
+    fun fromEntityModelToDomainModel(entityModel: EntityModel): DomainModel
+
+    fun fromDomainModelToEntityModel(domainModel: DomainModel): EntityModel
+
+
+    //SUPPORT
+    fun fromEntitySupportToDomainSupport(entitySupport: EntitySupport): DomainSupport
+
+    fun fromDomainSupportToEntitySupport(domainSupport: DomainSupport): EntitySupport
 }

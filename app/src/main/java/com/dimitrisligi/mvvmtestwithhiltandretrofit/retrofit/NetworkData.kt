@@ -15,7 +15,7 @@ data class NetworkData(
 
     @SerializedName("first_name")
     @Expose
-    var firstName: String,
+    var firstname: String,
 
     @SerializedName("id")
     @Expose
@@ -23,5 +23,5 @@ data class NetworkData(
 
     @SerializedName("last_name")
     @Expose
-    var lastName: String
+    var lastname: String
 )
