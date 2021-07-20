@@ -7,21 +7,21 @@ import com.google.gson.annotations.SerializedName
 data class NetworkData(
     @SerializedName("avatar")
     @Expose
-    val avatar: String,
+    var avatar: String,
 
     @SerializedName("email")
     @Expose
-    val email: String,
+    var email: String,
 
     @SerializedName("first_name")
     @Expose
-    val firstName: String,
+    var firstName: String,
 
     @SerializedName("id")
     @Expose
-    val id: Int,
+    var id: Int,
 
     @SerializedName("last_name")
     @Expose
-    val lastName: String
+    var lastName: String
 )
