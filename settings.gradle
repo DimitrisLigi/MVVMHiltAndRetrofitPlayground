@@ -1,0 +1,2 @@
+rootProject.name = "MVVM Test with Hilt and Retrofit"
+include ':app'
