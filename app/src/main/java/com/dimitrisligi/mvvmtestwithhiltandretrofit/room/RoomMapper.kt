@@ -46,4 +46,7 @@ class RoomMapper : MapperInterface<
     }
 
 
+    fun mapTheCache(entities: List<RoomModelCache>): List<DomainModel> {
+        return entities.map { fromEntityModelToDomainModel(it) }
+    }
 }
